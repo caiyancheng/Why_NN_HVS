@@ -58,18 +58,33 @@ def reduce_tensor(t: torch.Tensor):
 
 def build_transforms(img_size: int):
     train_tf = transforms.Compose([
-        transforms.RandomResizedCrop(img_size, scale=(0.08, 1.0)),
+        transforms.Resize((img_size, img_size)),  # 固定缩放到 img_size × img_size
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225]),
     ])
     val_tf = transforms.Compose([
-        transforms.Resize(int(img_size * 256 / 224)),
-        transforms.CenterCrop(img_size),
+        transforms.Resize((img_size, img_size)),  # 验证集也统一成 224×224
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                             std=[0.229, 0.224, 0.225]),
     ])
     return train_tf, val_tf
+# def build_transforms(img_size: int):
+#     train_tf = transforms.Compose([
+#         transforms.RandomResizedCrop(img_size, scale=(0.08, 1.0)),
+#         transforms.RandomHorizontalFlip(),
+#         transforms.ToTensor(),
+#         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+#     ])
+#     val_tf = transforms.Compose([
+#         transforms.Resize(int(img_size * 256 / 224)),
+#         transforms.CenterCrop(img_size),
+#         transforms.ToTensor(),
+#         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+#     ])
+#     return train_tf, val_tf
 
 
 def maybe_limit_classes(imgfolder: datasets.ImageFolder, class_limit: int | None):
