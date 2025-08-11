@@ -133,7 +133,7 @@ def train_one_epoch(model, loader, optimizer, scaler, device, epoch, loss_fn, sc
     top1_meter = AverageMeter()
     start = time.time()
 
-    for i, (images, targets) in enumerate(loader):
+    for i, (images, targets) in tqdm(enumerate(loader)):
         images = images.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
         if channels_last:
