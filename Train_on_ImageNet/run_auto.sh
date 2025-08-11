@@ -6,21 +6,34 @@ source ~/anaconda3/etc/profile.d/conda.sh
 conda activate hvs_2
 cd /auto/homes/yc613/Py_codes/Why_NN_HVS/Train_on_ImageNet
 
-python train_main.py \
-    --train-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_train \
-    --val-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_val_sorted \
-    --model resnet18 \
-    --epochs 60 \
-    --batch-size 256 \
-    --img-size 224 \
-    --workers 12 \
-    --opt adamw \
-    --lr 0.1 \
-    --weight-decay 0.05 \
-    --label-smoothing 0.1 \
-    --warmup-epochs 5 \
-    --min-lr 1e-6 \
-    --amp \
-    --channels-last \
-    --output ./runs/resnet18_run
+python train_main_2.py \
+  --train-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_train \
+  --val-dir   /local/scratch-2/yc613/Datasets/ILSVRC2012_img_val_sorted \
+  --model resnet18 \
+  --epochs 90 \
+  --batch-size 256 \
+  --opt sgd --lr 0.1 --lr-base-batch 256 --momentum 0.9 --weight-decay 1e-4 \
+  --label-smoothing 0.1 \
+  --warmup-epochs 5 --min-lr 1e-6 \
+  --amp --channels-last \
+  --aa --reprob 0.1 \
+  --output ./runs/r18_sgd90
+
+#python train_main.py \
+#    --train-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_train \
+#    --val-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_val_sorted \
+#    --model resnet18 \
+#    --epochs 60 \
+#    --batch-size 256 \
+#    --img-size 224 \
+#    --workers 12 \
+#    --opt adamw \
+#    --lr 0.1 \
+#    --weight-decay 0.05 \
+#    --label-smoothing 0.1 \
+#    --warmup-epochs 5 \
+#    --min-lr 1e-6 \
+#    --amp \
+#    --channels-last \
+#    --output ./runs/resnet18_run
 
