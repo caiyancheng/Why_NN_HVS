@@ -11,6 +11,5 @@ torchrun --nproc_per_node=2 --master_port=29501 \
   /auto/homes/yc613/Py_codes/Why_NN_HVS/Train_on_ImageNet/train_main.py \
   --train-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_train \
   --val-dir   /local/scratch-2/yc613/Datasets/ILSVRC2012_img_val \
-  --model mobilenet_v3_large --epochs 60 --batch-size 256 --amp --channels-last \
-  --output ./runs_mobilenet_v3_large
+  --model mobilenet_v3_large --epochs 60 --batch-size 256 --amp --channels-last \--output ./runs_mobilenet_v3_large
 

@@ -5,7 +5,7 @@ Fast ImageNet trainer for 2x RTX 4090 (PyTorch DDP + AMP)
 import argparse
 import math
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 import random
 import time
 from dataclasses import dataclass
