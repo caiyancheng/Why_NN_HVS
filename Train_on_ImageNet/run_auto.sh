@@ -15,7 +15,7 @@ python train_main.py \
     --img-size 224 \
     --workers 12 \
     --opt adamw \
-    --lr 1.6 \
+    --lr 0.1 \
     --weight-decay 0.05 \
     --label-smoothing 0.1 \
     --warmup-epochs 5 \
