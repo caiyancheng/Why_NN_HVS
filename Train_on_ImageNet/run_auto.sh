@@ -8,7 +8,7 @@ cd /auto/homes/yc613/Py_codes/Why_NN_HVS/Train_on_ImageNet
 
 python train_main.py \
     --train-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_train \
-    --val-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_val \
+    --val-dir /local/scratch-2/yc613/Datasets/ILSVRC2012_img_val_sorted \
     --model resnet18 \
     --epochs 60 \
     --batch-size 256 \
